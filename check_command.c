@@ -1,35 +1,38 @@
 #include "header_f.h"
 
-int check_command_type(char *command)
-{
-    //2D array used to hold all the builtin commands 
-    char *builtin_command[] = {"echo", "printf", "read", "cd", "pwd", "pushd", "popd", "dirs", "let", "eval", "set", "unset", "export", "declare", "typeset", "readonly", "getopts", "source", "exit", "exec", "shopt", "caller", "true", "type", "hash", "bind", "help", NULL};
-   
-    if(strcmp(command,"\0") == 0)
-    {
+int check_command_type(const char *command, shell_context_t *ctx) {
+    if (!command || !ctx) {
         return NO_COMMAND;
     }
-
-    //check if the given command is builtin command
-    for(int index = 0; builtin_command[index] != NULL; index++)
-    {
-        if(strcmp(command, builtin_command[index]) == 0)
-        {
+    
+    // Check for empty command
+    if (strlen(command) == 0) {
+        return NO_COMMAND;
+    }
+    
+    // Builtin commands list - only implement what we actually support
+    const char *builtin_commands[] = {
+        "echo", "cd", "pwd", "exit", NULL
+    };
+    
+    // Check if the given command is a builtin command
+    for (int index = 0; builtin_commands[index] != NULL; index++) {
+        if (strcmp(command, builtin_commands[index]) == 0) {
             return BUILTIN;
         }
     }
-
-    //array to hold the external commands read from a file 
-    char *external_command[155] = {NULL};
-    extract_external_commands(external_command);
-    //check if the entered command is an external command 
-    for(int ext_index = 0; external_command[ext_index] != NULL; ext_index++)
-    {
-        if(strcmp(command, external_command[ext_index]) == 0)
-        {
-            return EXTERNAL;
+    
+    // Check if the command is in our external commands list
+    if (ctx->external_commands) {
+        for (int ext_index = 0; ext_index < ctx->external_cmd_count; ext_index++) {
+            if (ctx->external_commands[ext_index] && 
+                strcmp(command, ctx->external_commands[ext_index]) == 0) {
+                return EXTERNAL;
+            }
         }
     }
+    
+    return NO_COMMAND;
 }
 
 
