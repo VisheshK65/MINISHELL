@@ -64,13 +64,13 @@ A feature-rich, secure, and robust command-line shell implementation that demons
 │                  │                  │                           │
 │  ┌─────────────┐ │  ┌─────────────┐ │  ┌─────────────────────┐  │
 │  │ Prompt      │ │  │ Command     │ │  │ External Commands   │  │
-│  │ Management  │ │  │ Classification │  │ - fork/exec model   │  │
+│  │ Management  │ │  │Classification │  │ - fork/exec model   │  │
 │  │ (PS1)       │ │  │             │ │  │ - 150+ system cmds  │  │
 │  └─────────────┘ │  └─────────────┘ │  └─────────────────────┘  │
 ├─────────────────────────────────────────────────────────────────┤
 │                    Core System Services                         │
-│  • Memory Management  • Signal Handling  • Process Control     │
-│  • Error Recovery    • Exit Status      • Resource Cleanup     │
+│  • Memory Management  • Signal Handling  • Process Control      │
+│  • Error Recovery    • Exit Status      • Resource Cleanup      │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -469,15 +469,6 @@ git push origin feature/your-feature
 
 ---
 
-## 👨‍💻 Author
-
-**VISHESH K**  
-📅 Project Date: May 23, 2023  
-🚀 Enhanced Version: 2.0  
-📧 Contact: [Add your contact information]
-
----
-
 ## 📄 License
 
 This project is developed for educational purposes, demonstrating advanced systems programming concepts in C.
@@ -489,10 +480,6 @@ This project is developed for educational purposes, demonstrating advanced syste
 - **Systems Programming Community** for best practices and security guidelines
 - **Valgrind Team** for memory debugging tools
 - **GNU Project** for excellent development tools and documentation
-
----
-
-*🎯 **Ready to explore systems programming?** Clone this repository and dive into the fascinating world of shell implementation, process management, and secure system programming!*
 
 ---
 
